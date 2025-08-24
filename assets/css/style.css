@@ -60,6 +60,7 @@ a {
                   width: 25px;
                   height: 25px;
             }
+
             .products-number {
                   position: absolute;
                   font-size: 12px;
@@ -77,9 +78,6 @@ a {
       }
 }
 
-.swiper {
-      overflow: scroll;
-}
 
 .swiper-pagination-bullet {
       width: 20px !important;
@@ -145,6 +143,102 @@ a {
                   display: flex;
                   align-items: center;
                   justify-content: center;
+            }
+      }
+}
+
+
+.cart {
+      .products-det {
+            img {
+                  width: 80px;
+            }
+      }
+
+      table {
+            tr {
+
+                  td,
+                  th {
+                        padding-bottom: 15px;
+                        color: #4b5563;
+                        font-size: 14px;
+                  }
+
+                  &:last-child td,
+                  &:last-child th {
+                        font-size: 18px;
+                  }
+            }
+      }
+
+      p {
+            span {
+                  color: #4b5563;
+            }
+      }
+}
+
+.delete-product {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      top: 5px;
+      left: 5px;
+}
+
+/*  */
+
+.request-header {
+      border-bottom: 1px solid #231F1E;
+
+      .request-header-content {
+            span {
+                  font-size: 12px;
+            }
+      }
+}
+
+.one-product {
+      padding-bottom: 50px;
+      .product-det {
+            ul {
+                  display: flex;
+                  flex-direction: column;
+                  gap: 15px;
+                  li {
+                        font-weight: bold;
+                        position: relative;
+                        padding-right: 15px;
+                        font-size: 14px;
+                        &::after {
+                              content: "";
+                              position: absolute;
+                              width: 10px;
+                              height: 10px;
+                              background-color: #000;
+                              border-radius: 50%;
+                              top: 50%;
+                              transform: translateY(-50%);
+                              right: 0;
+                        }
+                  }
+            }
+      }
+
+      .payment-method {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border: 1px solid #231f1e4b;
+            padding: 10px;
+            border-radius: 10px;
+            margin-top: 10px;
+            gap: 10px;
+            img,
+            svg {
+                  width: 76px;
+                  height: 24px;
             }
       }
 }
