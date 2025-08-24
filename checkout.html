@@ -5,35 +5,380 @@
       <meta charset="UTF-8">
       <meta name="viewport" content="width=device-width, initial-scale=1.0">
       <title>ستار بلاك</title>
-      <link rel="stylesheet" href="assets/css/bootstrap.min.css">
-      <link rel="stylesheet" href="assets/css/style.css">
       <link rel="stylesheet" href="assets/css/all.min.css">
       <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@emran-alhaddad/saudi-riyal-font/index.css">
+      <link rel="stylesheet" href="assets/css/checkout.css">
 
-      <!-- Swiper CSS -->
-      <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+      <style>
+            .list,
+            .list--clear {
+                  list-style: none;
+                  margin: 0;
+                  padding: 0;
+
+            }
+
+            .list {
+                  flex-wrap: wrap;
+            }
+
+            .list--brands {
+                  align-items: center;
+                  display: flex;
+                  flex-direction: row;
+                  justify-content: flex-start;
+            }
+
+            .list--brands li {
+                  color: #c4c4c4;
+                  display: inline-block;
+                  font-size: 14px;
+                  margin: 0 5px;
+            }
+
+            .list--brands li img {
+                  display: inline-block;
+                  height: auto;
+                  opacity: .4;
+                  vertical-align: middle;
+                  width: 15px;
+
+            }
+      </style>
 </head>
 
 
+
 <body>
-      <section class="request py-5 px-2">
-            <section class="container p-3 rounded-2 request bg-white">
-                  <section class="request-header d-flex gap-3 pb-4">
-                        <section class="image p-3 border rounded-2">
-                              <img src="https://cdn.salla.sa/XyApj/vOVHx99IMSxkJ8XKDTkJvO7snYGmxJH9JlYN7v92.jpg"
-                                    alt="image" width="100px">
+
+      <!-- Start Header -->
+      <section class="header">
+            <section class="container">
+                  <section class="details-page">
+                        <section class="image">
+                              <a href="/"><img src="https://cdn.salla.sa/cdn-cgi/image/fit=scale-down,width=400,height=40%E2%80%A6=redirect,format=auto/XyApj/vOVHx99IMSxkJ8XKDTkJvO7snYGmxJH9JlYN7v92.jpg" alt="image"></a>
                         </section>
-                        <section class="request-header-content">
-                              <p class="m-0 fw-bold fs-5">كريم قشقوش</p>
-                              <span><a href="#">سلة المشتريات</a> / إتمام الطلب</span>
-                        </section>
-                  </section>
-                  <section class="total pt-4">
-                        <section class="total-header d-flex align-items-center justify-content-between">
-                              <p class="fw-bold">إجمالي الطلب</p>
-                              <p class="fw-bold"><span class="icon-saudi_riyal"></span> 349</p>
+                        <section>
+                              <h2>مرحبا بك </h2>
+                              <p> </span> <a href="#">سلة المشتريات</a> <span>/</span>
+                                    <span>إتمام الطلب</span>
+                              </p>
                         </section>
                   </section>
             </section>
       </section>
+      <!-- End Header -->
+
+      <!-- Start request -->
+      <section class="request">
+            <section class="container">
+                  <section class="cart-summry">
+                        <ul>
+                              <li>
+                                    <h4>ملخص السلة</h4>
+                                    <p><span class="total">123</span> ر.س</p> <!-- Total -->
+                              </li>
+                              <li>
+                                    <h4>تكلفة الشحن</h4>
+                                    <p>مجاني</p>
+                              </li>
+                        </ul>
+                  </section>
+                  <section class="final-total">
+                        <h2>اجمالي الطلب</h2>
+                        <h2><span id="finalTotal">123</span> ر.س</h2>
+                  </section>
+                  <section class="coupon">
+                        <button onclick="openCoupon()">هل لديك كوبون ؟</button>
+                        <form onsubmit='stopForm(event)'>
+                              <input type="text" placeholder="أدخل رمز الكوبون" id="couponCode">
+                              <button class="coupon-btn" id="couponBtn">تطبيق</button>
+                              <span class="errorMassege"></span>
+                        </form>
+                  </section>
+                  <button class="invoice-details" onclick="openCartSummry()">تفاصيل الفاتورة</button>
+            </section>
+      </section>
+      <!-- Start request -->
+
+      <!-- بدء معلومات الشحن والدفع -->
+      <section class="main">
+            <section class="container">
+                  <!-- بداية معلومات الشحن -->
+                  <section class="trips active sec">
+                        <button class="section-title" id="trips">
+                              <h2>1</h2>
+                              <h3>عنوان الشحن</h3>
+                        </button>
+                        <section class="trips-content active content">
+                              <h2>اضافة عنوان جديد</h2>
+                              <form class="trips-form" onsubmit='stopForm(event)'>
+
+                                    <section class="input-section">
+                                          <label for="personalName">الاسم</label>
+                                          <input type="text" id="personalName" name="personalName" placeholder="الاسم">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <section class="input-section">
+                                          <label for="country">الدولة</label>
+                                          <input type="text" id="country" name="country" placeholder="الدولة">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <section class="input-section">
+                                          <label for="City">المدينة</label>
+                                          <input type="text" id="City" name="City" placeholder="المدينة">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <section class="input-section">
+                                          <label for="neighborhood">الحي</label>
+                                          <input type="text" id="neighborhood" name="neighborhood" placeholder="الحي">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <section class="input-section">
+                                          <label for="street">الشارع</label>
+                                          <input type="text" id="street" name="street" placeholder="الشارع">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <section class="input-section">
+                                          <label for="number">رقم الهاتف</label>
+                                          <input type="text" id="phoneNumber" name="number" placeholder="رقم الهاتف">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <section class="input-section">
+                                          <label for="extraNumber">رقم الهاتف الثاني (اختياري)</label>
+                                          <input type="text" id="extraNumber" name="extraNumber"
+                                                placeholder="رقم الهاتف الثاني (اختياري)">
+                                          <span class="errorMassege"></span>
+                                    </section>
+
+                                    <input type="submit" value="حفظ" id="tripsFormBtn">
+                              </form>
+                        </section>
+                  </section>
+                  <!-- نهاية معلومات الشحن -->
+
+                  <!-- شركة الشحن -->
+                  <section class="trips-company sec">
+                        <button class="section-title" id="tripsCompany">
+                              <h2>2</h2>
+                              <h3>شركة الشحن</h3>
+                        </button>
+                        <section class="content contetn-trips-company">
+                              <section class="trips-company-content">
+                                    <form class="trips-company-form">
+                                          <input type="radio" name="wipik" id="wipik" checked>
+                                          <img src="https://salla-dev-portal.s3.eu-central-1.amazonaws.com/uploads/Yb8ewJGh7fOQpkB741C6bRErn1A7xhHEhFIjhRqF.jpg"
+                                                alt="image">
+                                          <section>
+                                                <h2>ويبك</h2>
+                                                <p>من 1 الي 4 أيام</p>
+                                          </section>
+                                    </form>
+                                    <h2>مجاني</h2>
+                              </section>
+                              <input type="submit" value="حفظ" class="trips-company-form-btn">
+                        </section>
+                  </section>
+                  <!-- شركة الشحن -->
+
+                  <!-- بيانات الدفع -->
+                  <section class="pay sec">
+                        <button class="section-title">
+                              <h2>3</h2>
+                              <h3>الدفع</h3>
+                        </button>
+
+                        <section class="pay-content content">
+                              <form class="cards">
+                                    <section class="card">
+                                          <input type="radio" name="trans" id="mada" value="mada" checked>
+                                          <label for="mada">
+                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/pay-option-mada.svg"
+                                                      alt="Mada">
+                                          </label>
+                                    </section>
+
+                                    <section class="card">
+                                          <input type="radio" name="trans" id="visa" value="visa">
+                                          <label for="visa">
+                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/pay-option-credit-2.svg"
+                                                      alt="Visa / MasterCard">
+                                          </label>
+                                    </section>
+
+                                    <section class="card">
+                                          <input type="radio" name="trans" id="tamara" value="tamara">
+                                          <label for="tamara">
+                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/tamara/ar-tamara-label.svg"
+                                                      alt="Tamara">
+                                          </label>
+                                    </section>
+
+                                    <section class="card">
+                                          <input type="radio" name="trans" id="tabby" value="tabby">
+                                          <label for="tabby">
+                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/pay-option-tabby_en.png?v=0.0.1"
+                                                      alt="Tabby">
+                                          </label>
+                                    </section>
+
+                                    <section class="card">
+                                          <input type="radio" name="trans" id="bank" value="bank">
+                                          <label for="bank">
+                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/pay-option-bank-acc.svg"
+                                                      alt="Bank Transfer">
+                                                <p>تحويل بنكي</p>
+                                          </label>
+                                    </section>
+                              </form>
+
+                              <!-- بيانات التقسيط -->
+                              <section class="payment-data">
+                                    <form onsubmit="event.preventDefault()">
+                                          <section>
+                                                <label for="installmentBy">الدفع/التقسيط على:</label>
+                                                <select name="installmentBy" id="installmentBy">
+                                                      <option value="نقدا">نقدا</option>
+                                                </select>
+                                                <span class="alert">يسمح بالتقسيط في حالة كان اجمالي المبلغ 1000 ر.س او
+                                                      اكثر</span>
+                                          </section>
+
+                                          <section>
+                                                <label for="firstPayment">مبلغ الدفعة الأولى</label>
+                                                <input type="text" id="firstPayment" value="1000 ر.س" disabled>
+                                          </section>
+
+                                          <section>
+                                                <label for="monthlyPayment">إجمالي الدفعة الشهرية</label>
+                                                <input type="text" id="monthlyPayment" disabled>
+                                          </section>
+
+                                          <section>
+                                                <label for="residual">إجمالي المبلغ المتبقي</label>
+                                                <input type="text" id="residual" disabled>
+                                          </section>
+                                    </form>
+
+                                    <table id="tablePayment">
+                                          <thead>
+                                                <tr>
+                                                      <th>#</th>
+                                                      <th>تاريخ الدفعات</th>
+                                                      <th>الدفعة الشهرية</th>
+                                                </tr>
+                                          </thead>
+                                          <tbody id="tbody">
+                                                <!-- بيانات الدفعات هتظهر هنا -->
+                                          </tbody>
+                                    </table>
+                              </section>
+
+                              <!-- الدفع بالبطاقة -->
+                              <section class="pay-det">
+                                    <form class="pay-by-visa" onsubmit="event.preventDefault()">
+                                          <section class="input-section card-number">
+                                                <label for="cardNumber">رقم البطاقة</label>
+                                                <input type="number" id="cardNumber" placeholder="رقم البطاقة"
+                                                      maxlength="16"
+                                                      oninput="if(this.value.length > 16) this.value = this.value.slice(0,16);">
+                                                <span class="errorMassege"></span>
+                                          </section>
+
+                                          <section class="input-section">
+                                                <label for="exp">تاريخ الانتهاء</label>
+                                                <section class="exp">
+                                                      <input type="number" placeholder="السنة" id="year" maxlength="2"
+                                                            oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);">
+                                                      <input type="number" id="exp" placeholder="/" disabled>
+                                                      <input type="number" placeholder="الشهر" id="month" maxlength="2"
+                                                            oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);">
+                                                </section>
+                                                <span class="errorMassege"></span>
+                                          </section>
+
+                                          <section class="input-section">
+                                                <label for="cvv">رمز التحقق (CVV)</label>
+                                                <input type="number" maxlength="3" id="cvv"
+                                                      placeholder="رمز التحقق (cvv)"
+                                                      oninput="if(this.value.length > 3) this.value = this.value.slice(0,3);">
+                                                <span class="errorMassege"></span>
+                                          </section>
+
+                                          <input type="submit" value="دفع" id="payBtn">
+
+                                          <ul class="list list--brands">
+                                                <li>تسوق إلكتروني آمن 100%</li>
+                                                <li><img src="./secure-payment.svg" alt="secure"></li>
+                                                <li><img src="./secure-payment-02.svg" alt="secure"></li>
+                                                <li><img src="./secure-payment-03.svg" alt="secure"></li>
+                                          </ul>
+                                    </form>
+
+                                    <!-- الدفع بالتحويل البنكي -->
+                                    <section class="pay-by-trans">
+                                          <section class="bank-acount">
+                                                <section class="box">
+                                                      <p>صاحب الحساب</p>
+                                                      <h2>kariiiiiiiim</h2>
+                                                </section>
+                                                <section class="box">
+                                                      <p>رقم الحساب</p>
+                                                      <h2>0000000</h2>
+                                                </section>
+                                                <section class="box">
+                                                      <p>رقم الآيبان</p>
+                                                      <h2>0000000</h2>
+                                                </section>
+                                          </section>
+                                          <section class="after-transfer">
+                                                <p>معلومات بعد التحويل</p>
+                                                <h6>يجب ارفاق صورة من إيصال التحويل البنكي واسم الذي قام بالتحويل حتى
+                                                      يتم قبول الطلب</h6>
+                                          </section>
+
+                                          <form class="pay2" onsubmit="event.preventDefault()">
+                                                <section>
+                                                      <label for="name">اسم صاحب الحساب المحول منه</label>
+                                                      <input type="text" id="name"
+                                                            placeholder="اسم صاحب الحساب المحول منه">
+                                                      <span class="errorMassege"></span>
+                                                </section>
+
+                                                <label for="image">إرفاق صورة لإيصال التحويل</label>
+                                                <div class="wrapper">
+                                                      <div class="file-upload">
+                                                            <input type="file" id="image">
+                                                            <i class="fa fa-arrow-up"></i>
+                                                      </div>
+                                                </div>
+
+                                                <input type="submit" value="دفع" class="pay2-btn">
+                                          </form>
+                                    </section>
+                              </section>
+                        </section>
+                  </section>
+                  <!-- بيانات الدفع -->
+            </section>
+      </section>
+      <!-- نهاية معلومات الشحن والدفع -->
+
+      <!-- Top Alert -->
+      <section class="top-alert">
+            <p class="">لتتمكن من الدفع بواسطة Apple Pay يجب عليك استخدام متصفح سفاري </p>
+            <button onclick="copyURL()" id="copyLink">انسخ الرابط</button>
+
+            <button id="closeAlert"><i class="fa-solid fa-xmark"></i></button>
+      </section>
+
+      <script src="assets/js/all.min.js"></script>
+      <script src="assets/js/checkout.js"></script>
+
 </body>
