@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300..900;1,300..900&display=swap');
+
+:root {
+      --main-color: #231F1E;
+      --mian-bg: #e5e7eb;
+      --transition: .3s;
+}
+
+
+body {
+      font-family: "Rubik", sans-serif;
+      direction: rtl;
+      color: var(--main-color);
+      background-color: var(--mian-bg);
+}
+
+input {
+      border: none;
+      outline: none;
+}
+
+ul {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+}
+
+a {
+      text-decoration: none;
+      color: inherit;
+}
+
+
+.top-header {
+      font-size: 14px;
+
+      .links {
+            ul li a {
+                  padding-inline: 10px;
+            }
+
+            ul li:not(:last-child) a {
+                  border-left: 1px solid rgb(198, 198, 199);
+            }
+      }
+}
+
+.navbar {
+      .navbar-nav {
+            a {
+                  padding: 12px 32px;
+                  color: var(--main-color);
+                  font-size: 0.875rem;
+                  font-weight: 700;
+            }
+      }
+
+      .icons {
+            svg {
+                  width: 30px;
+                  height: 30px;
+            }
+            .products-number {
+                  position: absolute;
+
+                  color: #fff;
+                  padding: 15px;
+                  width: 15px;
+                  height: 15px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+                  border-radius: 50%;
+                  top: -35px;
+                  right: -10px;
+            }
+      }
+}
+
+.swiper {
+      overflow: scroll;
+}
+
+.swiper-pagination-bullet {
+      width: 20px !important;
+      height: 10px !important;
+      border-radius: 10px !important;
+}
+
+.swiper-pagination-bullet-active {
+      background: var(--main-color) !important;
+}
+
+
+.card {
+      border-radius: 10px;
+      background-color: #fff;
+
+      .image {
+            background-color: #f6f6f6;
+            border-top-left-radius: 10px;
+            border-top-right-radius: 10px;
+      }
+
+      .card-body h5 {
+            margin: 0;
+            font-size: 14px;
+            line-height: 1.6;
+      }
+
+      p {
+            color: #4b5563;
+            font-size: 12px;
+            margin: 0 !important;
+      }
+
+      .add-product {
+            border: 1px solid var(--main-color);
+            border-radius: 10px;
+            transition: var(--transition);
+
+            &:hover {
+                  background-color: var(--main-color);
+                  color: var(--mian-bg);
+            }
+      }
+}
+
+
+.footer {
+      background-color: var(--main-color);
+      color: #fff;
+
+      p {
+            line-height: 1.6;
+      }
+
+      .social {
+            a i {
+                  padding: 10px;
+                  border: 1px solid;
+                  border-radius: 50%;
+                  width: 30px;
+                  height: 30px;
+                  display: flex;
+                  align-items: center;
+                  justify-content: center;
+            }
+      }
+}
