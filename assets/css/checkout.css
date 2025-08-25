@@ -5,9 +5,7 @@
       --w-color: #fff;
       --border-color: #cecece;
       --link-color: #999999;
-      --sub-p: #BBBBBB;
-      --main-color: #333333;
-      --sub-color: ;
+      --main-color: #231F1E;
 }
 
 * {
@@ -37,6 +35,15 @@ img {
 
 ul {
       list-style: none;
+}
+
+label {
+      margin-bottom: 5px;
+}
+
+td,
+th {
+      padding: 5px;
 }
 
 input,
@@ -158,10 +165,6 @@ select {
       .header .container {
             flex-direction: column;
             gap: 20px;
-      }
-
-      .header .container .details-page {
-            flex-direction: column;
       }
 }
 
@@ -301,7 +304,7 @@ select {
 .trips-content.active {
       border: 1px dashed #9999999c;
       padding: 15px;
-      height: 519px;
+      height: 435px;
       overflow: auto;
 }
 
@@ -373,27 +376,45 @@ select {
       margin-top: 15px;
       height: 0;
       transition: 0.5s ease;
+
 }
 
 .trips-company .content.active {
-      height: 127px;
+      height: 300px;
       overflow: auto;
 }
 
 .trips-company-content {
       display: flex;
-      justify-content: space-between;
+      gap: 15px;
       align-items: center;
       border: 1px solid #86c2ce;
       padding: 5px;
       border-radius: 5px;
+      margin-bottom: 10px; 
+      >h2 {
+            width: 25px;
+      }
 }
 
-.trips-company-content form {
+.trips-company-content label {
       display: flex;
       align-items: center;
       gap: 15px;
+      width: 100%;
+
+      >section {
+            h2 {
+                  font-size: 16px;
+                  margin-bottom: 3px;
+            }
+
+            p {
+                  font-size: 14px;
+            }
+      }
 }
+
 
 .trips-company-form-btn {
       padding: 10px;
@@ -406,12 +427,12 @@ select {
       background-color: #86c2ce;
 }
 
-.trips-company-content form input {
+.trips-company-content input {
       width: 20px;
       height: 20px;
 }
 
-.trips-company-content form>section {
+.trips-company-content>section {
       h2 {
             font-size: 14px;
       }
@@ -422,8 +443,8 @@ select {
 }
 
 
-.trips-company-content form img {
-      width: 65px;
+.trips-company-content img {
+      width: 60px;
 }
 
 .trips-company-content>h2 {
@@ -444,7 +465,7 @@ select {
 }
 
 .pay-content.active {
-      height: 600px;
+      height: 420px;
       overflow: auto;
       margin-top: 15px;
 }

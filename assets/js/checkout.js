@@ -1,5 +1,5 @@
 let tripsForm = document.querySelector(".trips-form"),
-      tripsCompanyBtn = document.querySelector(".trips-company-form-btn"),
+      tripsCompanyBtn = document.getElementById("tripsCompanyFormBtn"),
       personalName = document.getElementById("personalName"),
       personalName2 = document.getElementById("personalName2"),
       personalName3 = document.getElementById("personalName3"),
@@ -40,7 +40,8 @@ let country2 = document.getElementById("country2"),
       payForm = document.querySelector(".pay-by-visa"),
       payForm2 = document.querySelector(".pay-by-trans"),
       payBtn = document.getElementById("payBtn"),
-      pay2Btn = document.querySelector(".pay2-btn"),
+      pay2Btn = document.getElementById("pay2Btn"),
+      pay2 = document.getElementById("pay2"),
       acountTransferName = document.getElementById("name"),
       imageTrans = document.getElementById("imageTrans");
 
@@ -49,9 +50,7 @@ let installmentBy2 = document.getElementById("installmentBy2");
 let installmentBy3 = document.getElementById("installmentBy3");
 let firstPayment = document.getElementById("firstPayment");
 let monthlyPayment2 = document.getElementById("monthlyPayment2");
-let residual2 = document.getElementById("residual2");
 let monthlyPayment3 = document.getElementById("monthlyPayment3");
-let residual3 = document.getElementById("residual3");
 let monthlyPayment = document.getElementById("monthlyPayment");
 let residual = document.getElementById("residual");
 let tableMonthlyPayment = document.getElementById("tablePayment")
@@ -399,44 +398,65 @@ let acountTransferNameCheck = acountTransferName.onchange = () => {
       }
 }
 
-pay2Btn.onclick = (e) => {
-      acountTransferNameCheck()
+
+pay2.addEventListener("submit", (e) => {
+      e.preventDefault(); // يمنع الإرسال دايمًا
+      acountTransferNameCheck();
+      console.log("تم منع الإرسال");
+
       if (!(nameValid && valid1 && valid2 && valid3 && valid4 && valid5 && valid6)) {
-            e.preventDefault(e)
             pay2Btn.classList.remove("active");
       } else {
             pay2Btn.classList.add("active");
+
+            // هنا لو عايز تبعته فعلاً لما يكون كله صحيح
+            // pay2.submit();
       }
-}
+});
 
 
 
 
 if (total >= 1000) {
-      for (let i = 1; i < 25; i++) {
+      // إضافة خيار نقدا
+      const cashOption = document.createElement("option");
+      cashOption.value = "نقدا";
+      cashOption.innerHTML = "نقدا";
+      installmentBy.appendChild(cashOption);
+
+      // إضافة خيارات الشهور
+      for (let i = 1; i <= 24; i++) {
             const option = document.createElement("option");
-            option.value = `${i} شهر`;
+            option.value = i; // قيمة رقمية صافية
             option.innerHTML = `${i} شهر`;
             installmentBy.appendChild(option);
       }
 
+      // إظهار/إخفاء الحقول حسب الافتراضي
       if (installmentBy.value == "نقدا") {
             monthlyPayment.parentElement.style.display = "none";
             residual.parentElement.style.display = "none";
             firstPayment.parentElement.style.display = "none";
             tableMonthlyPayment.style.display = "none";
+      } else {
+            monthlyPayment.parentElement.style.display = "block";
+            residual.parentElement.style.display = "block";
+            firstPayment.parentElement.style.display = "block";
+            tableMonthlyPayment.style.display = "block";
       }
 
-      residual.value = `${total - 1000} ر.س`;
-      residual2.value = `${total - 1000} ر.س`;
-      residual3.value = `${total - 1000} ر.س`;
+      // المبلغ المتبقي
+      const residualAmount = total - 1000;
+      residual.value = residualAmount;
 
+      // عند تغيير نوع الدفع
       installmentBy.onchange = function () {
             if (installmentBy.value == "نقدا") {
                   monthlyPayment.parentElement.style.display = "none";
                   residual.parentElement.style.display = "none";
                   firstPayment.parentElement.style.display = "none";
                   tableMonthlyPayment.style.display = "none";
+                  return;
             } else {
                   monthlyPayment.parentElement.style.display = "block";
                   residual.parentElement.style.display = "block";
@@ -445,34 +465,34 @@ if (total >= 1000) {
             }
 
             const today = new Date();
-
             let year = today.getFullYear();
-            let month = today.getMonth();
+            let month = today.getMonth() + 1; // من 1 لـ 12
             let day = today.getDate();
 
-            const monthlyInstallment = parseInt(residual.value) / parseInt(installmentBy.value);
+            // حساب القسط الشهري
+            const monthsCount = parseInt(installmentBy.value);
+            const monthlyInstallment = residualAmount / monthsCount;
 
             monthlyPayment.value = `${monthlyInstallment.toFixed(2)} ر.س`;
-            monthlyPayment2.value = `${monthlyInstallment.toFixed(2)} ر.س`;
-            monthlyPayment3.value = `${monthlyInstallment.toFixed(2)} ر.س`;
 
+            // توليد جدول الأقساط
             let table = "";
-            for (let i = 1; i <= parseInt(installmentBy.value); i++) {
-                  month += 1;
+            for (let i = 1; i <= monthsCount; i++) {
+                  month++;
                   if (month > 12) {
                         month = 1;
-                        year += 1;
+                        year++;
                   }
 
-                  let date = `${day} / ${month + 1} / ${year}`;
+                  let date = `${day} / ${month} / ${year}`;
 
                   table += `
-            <tr style="border-bottom: 1px solid #ccc;">
-                <td>${i}</td>
-                <td dir="ltr">${date}</td>
-                <td>${monthlyInstallment.toFixed(2)}</td>
-            </tr>
-            `;
+                        <tr style="border-bottom: 1px solid #ccc;">
+                              <td>${i}</td>
+                              <td dir="ltr">${date}</td>
+                              <td>${monthlyInstallment.toFixed(2)} ر.س</td>
+                        </tr>
+                  `;
             }
             document.getElementById("tbody").innerHTML = table;
       };
@@ -482,6 +502,7 @@ if (total >= 1000) {
       firstPayment.parentElement.style.display = "none";
       tableMonthlyPayment.style.display = "none";
 }
+
 
 let closeAlert = document.getElementById("closeAlert");
 let copyLink = document.getElementById("copyLink");

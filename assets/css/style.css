@@ -2,7 +2,7 @@
 
 :root {
       --main-color: #231F1E;
-      --mian-bg: #e5e7eb;
+      --mian-bg: #f7f7f7;
       --transition: .3s;
 }
 
@@ -11,6 +11,7 @@ body {
       font-family: "Rubik", sans-serif;
       direction: rtl;
       color: var(--main-color);
+            scroll-behavior: smooth;
       background-color: var(--mian-bg);
 }
 

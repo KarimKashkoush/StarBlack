@@ -56,7 +56,9 @@
             <section class="container">
                   <section class="details-page">
                         <section class="image">
-                              <a href="/"><img src="https://cdn.salla.sa/cdn-cgi/image/fit=scale-down,width=400,height=40%E2%80%A6=redirect,format=auto/XyApj/vOVHx99IMSxkJ8XKDTkJvO7snYGmxJH9JlYN7v92.jpg" alt="image"></a>
+                              <a href="/"><img
+                                          src="https://cdn.salla.sa/cdn-cgi/image/fit=scale-down,width=400,height=40%E2%80%A6=redirect,format=auto/XyApj/vOVHx99IMSxkJ8XKDTkJvO7snYGmxJH9JlYN7v92.jpg"
+                                          alt="image"></a>
                         </section>
                         <section>
                               <h2>مرحبا بك </h2>
@@ -76,7 +78,7 @@
                         <ul>
                               <li>
                                     <h4>ملخص السلة</h4>
-                                    <p><span class="total">123</span> ر.س</p> <!-- Total -->
+                                    <p><span class="total">1200</span> ر.س</p> <!-- Total -->
                               </li>
                               <li>
                                     <h4>تكلفة الشحن</h4>
@@ -86,7 +88,7 @@
                   </section>
                   <section class="final-total">
                         <h2>اجمالي الطلب</h2>
-                        <h2><span id="finalTotal">123</span> ر.س</h2>
+                        <h2><span id="finalTotal">1200</span> ر.س</h2>
                   </section>
                   <section class="coupon">
                         <button onclick="openCoupon()">هل لديك كوبون ؟</button>
@@ -169,22 +171,62 @@
                               <h2>2</h2>
                               <h3>شركة الشحن</h3>
                         </button>
+
                         <section class="content contetn-trips-company">
-                              <section class="trips-company-content">
-                                    <form class="trips-company-form">
-                                          <input type="radio" name="wipik" id="wipik" checked>
-                                          <img src="https://salla-dev-portal.s3.eu-central-1.amazonaws.com/uploads/Yb8ewJGh7fOQpkB741C6bRErn1A7xhHEhFIjhRqF.jpg"
-                                                alt="image">
-                                          <section>
-                                                <h2>ويبك</h2>
-                                                <p>من 1 الي 4 أيام</p>
-                                          </section>
-                                    </form>
-                                    <h2>مجاني</h2>
-                              </section>
-                              <input type="submit" value="حفظ" class="trips-company-form-btn">
+                              <form class="trips-company-form" onsubmit='stopForm(event)'>
+
+                                    <!-- ارامكس -->
+                                    <section class="trips-company-content">
+                                          <input type="radio" name="wipik" id="aramex" value="aramex" checked>
+
+                                          <label for="aramex">
+                                                <img src="https://salla-dev-portal.s3.eu-central-1.amazonaws.com/uploads/2QUFRazjfXndeJGw9RepjrnVff9JDTaB8ajJbpwd.png"
+                                                      alt="image">
+                                                <section>
+                                                      <h2>ارامكس</h2>
+                                                      <p>من 1 الي 4 أيام</p>
+                                                </section>
+                                          </label>
+
+                                          <h2>32 <span class="icon-saudi_riyal"></span></h2>
+                                    </section>
+
+                                    <!-- ريدبوكس -->
+                                    <section class="trips-company-content">
+                                          <input type="radio" name="wipik" id="redbox" value="redbox">
+                                          <label for="redbox">
+                                                <img src="https://cdn.salla.sa/XTZj2dbvFUGb1rnobc3rJpMLLmHD4MNJXM3yOhot.png"
+                                                      alt="image">
+                                                <section>
+                                                      <h2>ريدبوكس</h2>
+                                                      <p>[استلم طلبك من خزائن ريد بوكس الذكية RedBox، بالوقت المناسب لك،
+                                                            الإيداع سيكون من 1-7 أيام]</p>
+                                                </section>
+                                          </label>
+                                          <h2>28 <span class="icon-saudi_riyal"></span></h2>
+                                    </section>
+
+                                    <!-- سمسا -->
+                                    <section class="trips-company-content">
+                                          <input type="radio" name="wipik" id="smsa" value="smsa">
+                                          <label for="smsa">
+                                                <img src="https://salla-dev-portal.s3.eu-central-1.amazonaws.com/uploads/gJDzXHGbhYIVuRSuRqZr8otHc8vsetkap4Z9Souo.png"
+                                                      alt="image">
+                                                <section>
+                                                      <h2>سمسا</h2>
+                                                      <p>من 1 الي 7 أيام</p>
+                                                </section>
+                                          </label>
+                                          <h2>32 <span class="icon-saudi_riyal"></span></h2>
+                                    </section>
+
+                                    <input type="submit" value="حفظ" id="tripsCompanyFormBtn"
+                                          class="trips-company-form-btn">
+
+                              </form>
                         </section>
                   </section>
+
                   <!-- شركة الشحن -->
 
                   <!-- بيانات الدفع -->
@@ -244,7 +286,6 @@
                                           <section>
                                                 <label for="installmentBy">الدفع/التقسيط على:</label>
                                                 <select name="installmentBy" id="installmentBy">
-                                                      <option value="نقدا">نقدا</option>
                                                 </select>
                                                 <span class="alert">يسمح بالتقسيط في حالة كان اجمالي المبلغ 1000 ر.س او
                                                       اكثر</span>
@@ -252,17 +293,17 @@
 
                                           <section>
                                                 <label for="firstPayment">مبلغ الدفعة الأولى</label>
-                                                <input type="text" id="firstPayment" value="1000 ر.س" disabled>
+                                                <input type="text" id="firstPayment" value="1000 ر.س" readonly>
                                           </section>
 
                                           <section>
                                                 <label for="monthlyPayment">إجمالي الدفعة الشهرية</label>
-                                                <input type="text" id="monthlyPayment" disabled>
+                                                <input type="text" id="monthlyPayment" readonly>
                                           </section>
 
                                           <section>
                                                 <label for="residual">إجمالي المبلغ المتبقي</label>
-                                                <input type="text" id="residual" disabled>
+                                                <input type="text" id="residual" readonly>
                                           </section>
                                     </form>
 
@@ -282,32 +323,65 @@
 
                               <!-- الدفع بالبطاقة -->
                               <section class="pay-det">
-                                    <form class="pay-by-visa" onsubmit="event.preventDefault()">
+                                    <form class="pay-by-visa">
+                                          <input type="hidden" id="methodPayment1" name="methodPayment1">
+
+                                          <input type="hidden" id="installmentBy2" name="installmentBy2">
+
+                                          <input type="hidden" id="personalName2" name="personalName2"
+                                                placeholder="الاسم">
+
+                                          <input type="hidden" id="firstPayment2" name="firstPayment2" value="1000 ر.س">
+
+                                          <input type="hidden" id="monthlyPayment2" name="monthlyPayment2">
+
+                                          <input type="hidden" id="residual2" name="residual2">
+
+                                          <input type="hidden" id="country2" name="country2" placeholder="الدولة">
+
+                                          <input type="hidden" id="City2" name="City2" placeholder="المدينة">
+
+                                          <input type="hidden" id="neighborhood2" name="neighborhood2"
+                                                placeholder="الحي">
+
+                                          <input type="hidden" id="street2" name="street2" placeholder="الشارع">
+
+                                          <input type="hidden" id="phoneNumber2" name="number2"
+                                                placeholder="رقم الهاتف">
+
+                                          <input type="hidden" id="extraNumber2" name="extraNumber2"
+                                                placeholder="رقم الهاتف الثاني (اختياري)">
+
                                           <section class="input-section card-number">
                                                 <label for="cardNumber">رقم البطاقة</label>
-                                                <input type="number" id="cardNumber" placeholder="رقم البطاقة"
-                                                      maxlength="16"
-                                                      oninput="if(this.value.length > 16) this.value = this.value.slice(0,16);">
+                                                <input type="number" name="cardNumber" id="cardNumber"
+                                                      placeholder="رقم البطاقة" maxlength="16"
+                                                      oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                      type="number" maxlength="16">
                                                 <span class="errorMassege"></span>
                                           </section>
 
                                           <section class="input-section">
                                                 <label for="exp">تاريخ الانتهاء</label>
                                                 <section class="exp">
-                                                      <input type="number" placeholder="السنة" id="year" maxlength="2"
-                                                            oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);">
+                                                      <input type="number" placeholder="السنة" name="year" id="year"
+                                                            required
+                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                            type="number" maxlength="2">
                                                       <input type="number" id="exp" placeholder="/" disabled>
-                                                      <input type="number" placeholder="الشهر" id="month" maxlength="2"
-                                                            oninput="if(this.value.length > 2) this.value = this.value.slice(0,2);">
+                                                      <input type="number" placeholder="الشهر" name="month" id="month"
+                                                            require
+                                                            oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                            type="number" maxlength="2">
                                                 </section>
                                                 <span class="errorMassege"></span>
                                           </section>
 
                                           <section class="input-section">
-                                                <label for="cvv">رمز التحقق (CVV)</label>
-                                                <input type="number" maxlength="3" id="cvv"
-                                                      placeholder="رمز التحقق (cvv)"
-                                                      oninput="if(this.value.length > 3) this.value = this.value.slice(0,3);">
+                                                <label for="cvv">رمز التحقق (cvv)</label>
+                                                <input oninput="javascript: if (this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"
+                                                      type="number" maxlength="3" name="cvv" id="cvv"
+                                                      placeholder="رمز التحقق (cvv)">
                                                 <span class="errorMassege"></span>
                                           </section>
 
@@ -315,13 +389,9 @@
 
                                           <ul class="list list--brands">
                                                 <li>تسوق إلكتروني آمن 100%</li>
-                                                <li><img src="./secure-payment.svg" alt="secure"></li>
-                                                <li><img src="./secure-payment-02.svg" alt="secure"></li>
-                                                <li><img src="./secure-payment-03.svg" alt="secure"></li>
                                           </ul>
-                                    </form>
 
-                                    <!-- الدفع بالتحويل البنكي -->
+                                    </form>
                                     <section class="pay-by-trans">
                                           <section class="bank-acount">
                                                 <section class="box">
@@ -339,27 +409,55 @@
                                           </section>
                                           <section class="after-transfer">
                                                 <p>معلومات بعد التحويل</p>
-                                                <h6>يجب ارفاق صورة من إيصال التحويل البنكي واسم الذي قام بالتحويل حتى
-                                                      يتم قبول الطلب</h6>
+                                                <h6>يجب ارفاق صوره من ايصال التحويل البنكي واسم الذي قام بالتحويل حتى
+                                                      يتم قبول الطلب
+                                                </h6>
                                           </section>
 
-                                          <form class="pay2" onsubmit="event.preventDefault()">
+
+                                          <form class="pay2" id="pay2">
+                                                <input type="hidden" id="methodPayment2" name="methodPayment2">
+
+                                                <input type="hidden" id="installmentBy3" name="installmentBy3">
+
+                                                <input type="hidden" id="personalName3" name="personalName">
+
+                                                <input type="hidden" id="firstPayment3" name="firstPayment3"
+                                                      value="1000 ر.س">
+
+                                                <input type="hidden" id="monthlyPayment3" name="monthlyPayment3">
+
+                                                <input type="hidden" id="residual3" name="residual3">
+
+                                                <input type="hidden" id="country3" name="country3" placeholder="الدولة">
+
+                                                <input type="hidden" id="City3" name="City3" placeholder="المدينة">
+
+                                                <input type="hidden" id="neighborhood3" name="neighborhood3"
+                                                      placeholder="الحي">
+
+                                                <input type="hidden" id="street3" name="street3" placeholder="الشارع">
+
+                                                <input type="hidden" id="phoneNumber3" name="number3"
+                                                      placeholder="رقم الهاتف">
+
+                                                <input type="hidden" id="extraNumber3" name="extraNumber3"
+                                                      placeholder="رقم الهاتف الثاني (اختياري)">
+
                                                 <section>
                                                       <label for="name">اسم صاحب الحساب المحول منه</label>
-                                                      <input type="text" id="name"
+                                                      <input type="text" name="name" id="name"
                                                             placeholder="اسم صاحب الحساب المحول منه">
                                                       <span class="errorMassege"></span>
                                                 </section>
-
-                                                <label for="image">إرفاق صورة لإيصال التحويل</label>
+                                                <label for="image">ارفاق صورة لايصال التحويل</label>
                                                 <div class="wrapper">
                                                       <div class="file-upload">
-                                                            <input type="file" id="image">
+                                                            <input type="file" id="image" />
                                                             <i class="fa fa-arrow-up"></i>
                                                       </div>
                                                 </div>
-
-                                                <input type="submit" value="دفع" class="pay2-btn">
+                                                <input type="submit" value="دفع" class="pay2-btn" id="pay2Btn">
                                           </form>
                                     </section>
                               </section>
