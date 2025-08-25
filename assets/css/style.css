@@ -31,6 +31,10 @@ a {
       color: inherit;
 }
 
+p {
+      margin: 0;
+}
+
 
 .top-header {
       font-size: 14px;
@@ -376,5 +380,16 @@ a {
                         color: #6b7280;
                   }
             }
+      }
+}
+
+@media (max-width: 768px) {
+      .product-price {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            z-index: 100;
       }
 }
