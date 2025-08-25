@@ -11,7 +11,7 @@ body {
       font-family: "Rubik", sans-serif;
       direction: rtl;
       color: var(--main-color);
-            scroll-behavior: smooth;
+      scroll-behavior: smooth;
       background-color: var(--mian-bg);
 }
 
@@ -202,16 +202,19 @@ a {
 
 .one-product {
       padding-bottom: 50px;
+
       .product-det {
             ul {
                   display: flex;
                   flex-direction: column;
                   gap: 15px;
+
                   li {
                         font-weight: bold;
                         position: relative;
                         padding-right: 15px;
                         font-size: 14px;
+
                         &::after {
                               content: "";
                               position: absolute;
@@ -236,10 +239,142 @@ a {
             border-radius: 10px;
             margin-top: 10px;
             gap: 10px;
+
             img,
             svg {
                   width: 76px;
                   height: 24px;
+            }
+      }
+}
+
+
+.feedback {
+      padding-top: 100px;
+      position: relative;
+
+      .content {
+            min-height: 200px;
+            padding: 35px;
+            padding-left: 100px;
+            display: flex;
+            align-items: center;
+
+            .user {
+                  display: flex;
+                  align-items: center;
+                  width: 100%;
+            }
+
+            .user-feedback {
+                  flex: 1;
+
+                  span {
+                        display: block;
+                        line-height: 1.6;
+                        margin-bottom: 15px;
+                  }
+            }
+
+            .username-rate {
+                  display: flex;
+                  justify-content: space-between;
+                  align-items: center;
+
+                  p {
+                        font-weight: 700;
+                        font-size: 14px;
+                        margin: 0;
+                  }
+            }
+
+            img {
+                  width: 80px;
+            }
+
+            >svg {
+                  position: absolute;
+                  top: 15px;
+                  left: 25px;
+                  width: 45px;
+                  height: 45px;
+            }
+      }
+
+      .mySwiper3 .swiper-slide {
+            width: 80%;
+      }
+
+
+      @media (max-width: 798px) {
+            .content {
+                  padding: 30px;
+                  min-height: 300px;
+
+                  .user {
+                        flex-direction: column;
+                  }
+
+                  .username-rate {
+                        flex-direction: column;
+                        justify-content: flex-start;
+                  }
+
+                  img {
+                        width: 55px;
+                        margin-bottom: 15px;
+                  }
+
+                  .user-feedback {
+                        span {
+                              margin-left: 0;
+                        }
+
+                  }
+
+                  >svg {
+
+                        width: 30px;
+                        height: 30px;
+                  }
+            }
+      }
+
+}
+
+.services {
+      padding-block: 50px;
+
+      .box {
+            .content {
+                  .icon {
+                        width: 64px;
+                        height: 64px;
+                        background-color: #000;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        border-radius: 50%;
+                        margin: auto;
+                        margin-bottom: 15px;
+
+                        svg {
+                              color: white;
+                              width: 35px;
+                              height: 35px;
+                        }
+                  }
+
+                  h5 {
+                        font-size: 14px;
+                        font-weight: bold;
+                        margin: 0;
+                  }
+
+                  span {
+                        font-size: 14px;
+                        color: #6b7280;
+                  }
             }
       }
 }
