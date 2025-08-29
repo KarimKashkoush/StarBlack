@@ -402,6 +402,7 @@ if (total >= 1000) {
 
             monthlyPayment.value = `${monthlyInstallment.toFixed(2)} ر.س`;
             firstPayment2.value = firstPayment.value;
+            monthlyPayment2.value = monthlyPayment.value;
 
             let table = "";
             for (let i = 1; i <= monthsCount; i++) {
