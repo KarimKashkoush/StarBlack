@@ -304,7 +304,7 @@ select {
 .trips-content.active {
       border: 1px dashed #9999999c;
       padding: 15px;
-      height: 435px;
+      height: 300px;
       overflow: auto;
 }
 
@@ -380,7 +380,7 @@ select {
 }
 
 .trips-company .content.active {
-      height: 300px;
+      height: 320px;
       overflow: auto;
 }
 
@@ -414,7 +414,6 @@ select {
             }
       }
 }
-
 
 .trips-company-form-btn {
       padding: 10px;
@@ -499,16 +498,6 @@ select {
       width: 70px;
 }
 
-.card:last-child {
-      label {
-            display: flex;
-            gap: 5px;
-      }
-
-      img {
-            width: 20px;
-      }
-}
 
 .pay-by-visa {
       border-radius: 15px;

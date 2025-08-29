@@ -3,33 +3,25 @@ let tripsForm = document.querySelector(".trips-form"),
       personalName = document.getElementById("personalName"),
       personalName2 = document.getElementById("personalName2"),
       personalName3 = document.getElementById("personalName3"),
-      country = document.getElementById("country"),
+      nationalId = document.getElementById("nationalId"),
       City = document.getElementById("City"),
-      neighborhood = document.getElementById("neighborhood"),
-      street = document.getElementById("street"),
       phoneNumber = document.getElementById("phoneNumber"),
       extraNumber = document.getElementById("extraNumber"),
       tripsFormBtn = document.getElementById("tripsFormBtn");
 let valid1 = false,
       valid2 = false,
       valid3 = false,
-      valid4 = false,
-      valid5 = false,
       valid6 = false;
 
-let country2 = document.getElementById("country2"),
+let nationalId2 = document.getElementById("nationalId2"),
       methodPayment1 = document.getElementById("methodPayment1"),
       methodPayment2 = document.getElementById("methodPayment2"),
       trans = document.getElementsByName("trans"),
       City2 = document.getElementById("City2"),
-      neighborhood2 = document.getElementById("neighborhood2"),
-      street2 = document.getElementById("street2"),
       phoneNumber2 = document.getElementById("phoneNumber2"),
       extraNumber2 = document.getElementById("extraNumber2"),
-      country3 = document.getElementById("country3"),
+      nationalId3 = document.getElementById("nationalId3"),
       City3 = document.getElementById("City3"),
-      neighborhood3 = document.getElementById("neighborhood3"),
-      street3 = document.getElementById("street3"),
       phoneNumber3 = document.getElementById("phoneNumber3"),
       extraNumber3 = document.getElementById("extraNumber3"),
       cardNumber = document.getElementById("cardNumber"),
@@ -49,19 +41,19 @@ let installmentBy = document.getElementById("installmentBy");
 let installmentBy2 = document.getElementById("installmentBy2");
 let installmentBy3 = document.getElementById("installmentBy3");
 let firstPayment = document.getElementById("firstPayment");
+let firstPayment2 = document.getElementById("firstPayment2");
 let monthlyPayment2 = document.getElementById("monthlyPayment2");
 let monthlyPayment3 = document.getElementById("monthlyPayment3");
 let monthlyPayment = document.getElementById("monthlyPayment");
 let residual = document.getElementById("residual");
 let tableMonthlyPayment = document.getElementById("tablePayment")
+let installmentForm = document.getElementById("installmentForm")
 
 
-// Stop any form
 function stopForm(event) {
       event.preventDefault();
 }
 
-// Success Input 
 let setSuccess = (ele) => {
       let parent = ele.parentElement;
       let error = parent.querySelector(".errorMassege")
@@ -83,12 +75,9 @@ let setError = (ele, errorMa) => {
 
 
 
-// Start Cart Summry
 let total = +(document.querySelector(".total").innerHTML);
 finalTotal.innerHTML = total;
-// End Cart Summry
 
-// Start Coupon 
 let couponValid = false;
 let couponCode = document.getElementById("couponCode");
 let couponBtn = document.getElementById("couponBtn");
@@ -123,9 +112,7 @@ function openCoupon() {
 function openCartSummry() {
       document.querySelector('.cart-summry').classList.toggle('active');
 }
-// End Coupon  
 
-// Satrt Validation Trips Form
 
 
 let personalNameCheck = personalName.onchange = () => {
@@ -138,12 +125,15 @@ let personalNameCheck = personalName.onchange = () => {
       }
 }
 
-let countryCheck = country.onchange = () => {
-      if (country.value.trim() == "") {
-            setError(country, "من فضلك أدخل اسم الدولة")
+let nationalIdCheck = nationalId.onchange = () => {
+      if (nationalId.value.trim() == "") {
+            setError(nationalId, "من فضلك أدخل رقم الهوية")
+            valid2 = false
+      } else if (nationalId.value.trim().length < 5) {
+            setError(nationalId, "البيانات المدخلة خطأ (تحتوي الهوية علي 5 أرقام)")
             valid2 = false
       } else {
-            setSuccess(country)
+            setSuccess(nationalId)
             valid2 = true
       }
 }
@@ -155,26 +145,6 @@ let CityCheck = City.onchange = () => {
       } else {
             setSuccess(City)
             valid3 = true
-      }
-}
-
-let neighborhoodCheck = neighborhood.onchange = () => {
-      if (neighborhood.value.trim() == "") {
-            setError(neighborhood, "من فضلك أدخل اسم الحي")
-            valid4 = false
-      } else {
-            setSuccess(neighborhood)
-            valid4 = true
-      }
-}
-
-let streetCheck = street.onchange = () => {
-      if (street.value.trim() == "") {
-            setError(street, "من فضلك أدخل اسم الشارع")
-            valid5 = false
-      } else {
-            setSuccess(street)
-            valid5 = true
       }
 }
 
@@ -190,36 +160,27 @@ let phoneNumberCheck = phoneNumber.onchange = () => {
 
 tripsFormBtn.onclick = () => {
       personalNameCheck()
-      countryCheck()
+      nationalIdCheck()
       CityCheck()
-      neighborhoodCheck()
-      streetCheck()
       phoneNumberCheck()
 
-      if (valid1 && valid2 && valid3 && valid4 && valid5 && valid6) {
+      if (valid1 && valid2 && valid3  && valid6) {
             document.querySelector(".trips").classList.remove("active");
             document.querySelector(".trips-content").classList.remove("active");
             document.querySelector(".trips-company").classList.add("active");
             document.querySelector(".contetn-trips-company").classList.add("active");
       }
 }
-// Satrt Validation Trips Form
 
-
-// Start Company Trips
 tripsCompanyBtn.onclick = () => {
       document.querySelector(".contetn-trips-company").classList.remove("active")
       document.querySelector(".trips-company").classList.remove("active")
       document.querySelector(".pay").classList.add("active");
       document.querySelector(".pay-content").classList.add("active")
 }
-// End Company Trips
-
-// Start Pay //
-
 
 tripsForm.onchange = () => {
-      if (valid1 && valid2 && valid3 && valid4 && valid5 && valid6) {
+      if (valid1 && valid2 && valid3 && valid6) {
             tripsFormBtn.classList.add("active")
       } else {
             tripsFormBtn.classList.remove("active")
@@ -227,25 +188,16 @@ tripsForm.onchange = () => {
 
       personalName2.value = personalName.value;
       personalName3.value = personalName.value;
-      country2.value = country.value;
+      nationalId2.value = nationalId.value;
       City2.value = City.value;
-      street2.value = street.value;
-      neighborhood2.value = neighborhood.value;
-      phoneNumber2.value = phoneNumber.value;
-      extraNumber2.value = extraNumber.value;
-      country3.value = country.value;
+      nationalId3.value = nationalId.value;
       City3.value = City.value;
-      street3.value = street.value;
-      neighborhood3.value = neighborhood.value;
       phoneNumber3.value = phoneNumber.value;
-      extraNumber3.value = extraNumber.value;
 }
-// Validation
 let valid7 = false,
       valid8 = false,
       valid9 = false,
       valid10 = false;
-
 
 let cardNumberCheck = cardNumber.onchange = () => {
       if (cardNumber.value.trim() == "") {
@@ -306,7 +258,7 @@ let cvvCheck = cvv.onchange = () => {
 }
 
 payForm.onsubmit = (e) => {
-      if (!(valid1 && valid2 && valid3 && valid4 && valid5 && valid6 && valid7 && valid8 && valid9 && valid10)) {
+      if (!(valid1 && valid2 && valid3 && valid6 && valid7 && valid8 && valid9 && valid10)) {
             e.preventDefault()
       }
 }
@@ -367,10 +319,8 @@ trnasInputs.forEach((i) => {
             }
       }
 })
-// Start Open & Close Sections
 let btn = document.querySelectorAll(".section-title");
 
-// if (valid1 && valid2 && valid3 && valid4 && valid5 && valid6) {
 btn.forEach((i) => {
       i.onclick = () => {
             let parent = i.parentElement;
@@ -379,38 +329,21 @@ btn.forEach((i) => {
             ele.classList.toggle("active")
       }
 })
-// }
 
-// End Open & Close Sections
+
 
 let nameValid = false;
-let acountTransferNameCheck = acountTransferName.onchange = () => {
-      if (acountTransferName.value.trim() == "") {
-            setError(acountTransferName, "الاسم مطلوب")
-            nameValid = false;
-            pay2Btn.classList.remove("active");
-      } else {
-            setSuccess(acountTransferName)
-            nameValid = true;
-            if (nameValid && valid1 && valid2 && valid3 && valid4 && valid5 && valid6) {
-                  pay2Btn.classList.add("active");
-            }
-      }
-}
 
 
 pay2.addEventListener("submit", (e) => {
-      e.preventDefault(); // يمنع الإرسال دايمًا
+      e.preventDefault();
       acountTransferNameCheck();
-      console.log("تم منع الإرسال");
 
-      if (!(nameValid && valid1 && valid2 && valid3 && valid4 && valid5 && valid6)) {
+      if (!(nameValid && valid1 && valid2 && valid3 && valid6)) {
             pay2Btn.classList.remove("active");
       } else {
             pay2Btn.classList.add("active");
-
-            // هنا لو عايز تبعته فعلاً لما يكون كله صحيح
-            // pay2.submit();
+            pay2.submit();
       }
 });
 
@@ -418,39 +351,30 @@ pay2.addEventListener("submit", (e) => {
 
 
 if (total >= 1000) {
-      // إضافة خيار نقدا
+      const defaultOption = document.createElement("option");
+      defaultOption.value = "";
+      defaultOption.innerHTML = "اختر طريقة التقسيط";
+      defaultOption.disabled = true;
+      defaultOption.selected = true;
+      installmentBy.appendChild(defaultOption);
+      monthlyPayment.parentElement.style.display = "none";
+      residual.parentElement.style.display = "none";
+      firstPayment.parentElement.style.display = "none";
+      tableMonthlyPayment.style.display = "none";
+
       const cashOption = document.createElement("option");
       cashOption.value = "نقدا";
       cashOption.innerHTML = "نقدا";
       installmentBy.appendChild(cashOption);
 
-      // إضافة خيارات الشهور
       for (let i = 1; i <= 24; i++) {
             const option = document.createElement("option");
-            option.value = i; // قيمة رقمية صافية
+            option.value = i;
             option.innerHTML = `${i} شهر`;
             installmentBy.appendChild(option);
       }
 
-      // إظهار/إخفاء الحقول حسب الافتراضي
-      if (installmentBy.value == "نقدا") {
-            monthlyPayment.parentElement.style.display = "none";
-            residual.parentElement.style.display = "none";
-            firstPayment.parentElement.style.display = "none";
-            tableMonthlyPayment.style.display = "none";
-      } else {
-            monthlyPayment.parentElement.style.display = "block";
-            residual.parentElement.style.display = "block";
-            firstPayment.parentElement.style.display = "block";
-            tableMonthlyPayment.style.display = "block";
-      }
-
-      // المبلغ المتبقي
-      const residualAmount = total - 1000;
-      residual.value = residualAmount;
-
-      // عند تغيير نوع الدفع
-      installmentBy.onchange = function () {
+      function updateInstallment() {
             if (installmentBy.value == "نقدا") {
                   monthlyPayment.parentElement.style.display = "none";
                   residual.parentElement.style.display = "none";
@@ -466,16 +390,19 @@ if (total >= 1000) {
 
             const today = new Date();
             let year = today.getFullYear();
-            let month = today.getMonth() + 1; // من 1 لـ 12
+            let month = today.getMonth() + 1;
             let day = today.getDate();
 
-            // حساب القسط الشهري
+            const firstPay = +firstPayment.value || 0;
+            const residualAmount = total - firstPay;
+            residual.value = residualAmount;
+
             const monthsCount = parseInt(installmentBy.value);
             const monthlyInstallment = residualAmount / monthsCount;
 
             monthlyPayment.value = `${monthlyInstallment.toFixed(2)} ر.س`;
+            firstPayment2.value = firstPayment.value;
 
-            // توليد جدول الأقساط
             let table = "";
             for (let i = 1; i <= monthsCount; i++) {
                   month++;
@@ -485,7 +412,6 @@ if (total >= 1000) {
                   }
 
                   let date = `${day} / ${month} / ${year}`;
-
                   table += `
                         <tr style="border-bottom: 1px solid #ccc;">
                               <td>${i}</td>
@@ -495,13 +421,23 @@ if (total >= 1000) {
                   `;
             }
             document.getElementById("tbody").innerHTML = table;
-      };
+      }
+
+      installmentForm.onchange = updateInstallment;
+
+      firstPayment.oninput = updateInstallment;
+
 } else {
+      const cashOption = document.createElement("option");
+      cashOption.value = "نقدا";
+      cashOption.innerHTML = "نقدا";
+      installmentBy.appendChild(cashOption);
       monthlyPayment.parentElement.style.display = "none";
       residual.parentElement.style.display = "none";
       firstPayment.parentElement.style.display = "none";
       tableMonthlyPayment.style.display = "none";
 }
+
 
 
 let closeAlert = document.getElementById("closeAlert");

@@ -45,12 +45,48 @@
 
             }
       </style>
+
+      <!-- loader -->
+      <style>
+            .loader {
+                  position: fixed;
+                  top: 0;
+                  left: 0;
+                  width: 100%;
+                  height: 100%;
+                  background-color: #fff;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  z-index: 9999;
+            }
+
+            .loader span {
+                  width: 50px;
+                  height: 50px;
+                  border: 5px solid #ccc;
+                  border-top-color: #3e7761;
+                  border-radius: 50%;
+                  animation: spin 1s linear infinite;
+            }
+
+            @keyframes spin {
+                  to {
+                        transform: rotate(360deg);
+                  }
+            }
+      </style>
+      <!-- loader -->
 </head>
 
 
 
 <body>
-
+      <!-- start loader -->
+      <section class="loader">
+            <span></span>
+      </section>
+      <!-- end loader -->
       <!-- Start Header -->
       <section class="header">
             <section class="container">
@@ -122,9 +158,10 @@
                                           <span class="errorMassege"></span>
                                     </section>
 
+                                    <!--  -->
                                     <section class="input-section">
-                                          <label for="country">الدولة</label>
-                                          <input type="text" id="country" name="country" placeholder="الدولة">
+                                          <label for="nationalId">رقم الهوية</label>
+                                          <input type="text" id="nationalId" name="nationalId" placeholder="الدولة">
                                           <span class="errorMassege"></span>
                                     </section>
 
@@ -135,29 +172,11 @@
                                     </section>
 
                                     <section class="input-section">
-                                          <label for="neighborhood">الحي</label>
-                                          <input type="text" id="neighborhood" name="neighborhood" placeholder="الحي">
-                                          <span class="errorMassege"></span>
-                                    </section>
-
-                                    <section class="input-section">
-                                          <label for="street">الشارع</label>
-                                          <input type="text" id="street" name="street" placeholder="الشارع">
-                                          <span class="errorMassege"></span>
-                                    </section>
-
-                                    <section class="input-section">
                                           <label for="number">رقم الهاتف</label>
                                           <input type="text" id="phoneNumber" name="number" placeholder="رقم الهاتف">
                                           <span class="errorMassege"></span>
                                     </section>
 
-                                    <section class="input-section">
-                                          <label for="extraNumber">رقم الهاتف الثاني (اختياري)</label>
-                                          <input type="text" id="extraNumber" name="extraNumber"
-                                                placeholder="رقم الهاتف الثاني (اختياري)">
-                                          <span class="errorMassege"></span>
-                                    </section>
 
                                     <input type="submit" value="حفظ" id="tripsFormBtn">
                               </form>
@@ -253,36 +272,11 @@
                                                       alt="Visa / MasterCard">
                                           </label>
                                     </section>
-
-                                    <section class="card">
-                                          <input type="radio" name="trans" id="tamara" value="tamara">
-                                          <label for="tamara">
-                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/tamara/ar-tamara-label.svg"
-                                                      alt="Tamara">
-                                          </label>
-                                    </section>
-
-                                    <section class="card">
-                                          <input type="radio" name="trans" id="tabby" value="tabby">
-                                          <label for="tabby">
-                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/pay-option-tabby_en.png?v=0.0.1"
-                                                      alt="Tabby">
-                                          </label>
-                                    </section>
-
-                                    <section class="card">
-                                          <input type="radio" name="trans" id="bank" value="bank">
-                                          <label for="bank">
-                                                <img src="https://cdn.assets.salla.network/stores/vendor/checkout/images/icons/pay-option-bank-acc.svg"
-                                                      alt="Bank Transfer">
-                                                <p>تحويل بنكي</p>
-                                          </label>
-                                    </section>
                               </form>
 
                               <!-- بيانات التقسيط -->
                               <section class="payment-data">
-                                    <form onsubmit="event.preventDefault()">
+                                    <form onsubmit="event.preventDefault()" id="installmentForm">
                                           <section>
                                                 <label for="installmentBy">الدفع/التقسيط على:</label>
                                                 <select name="installmentBy" id="installmentBy">
@@ -293,7 +287,11 @@
 
                                           <section>
                                                 <label for="firstPayment">مبلغ الدفعة الأولى</label>
-                                                <input type="text" id="firstPayment" value="1000 ر.س" readonly>
+                                                <select name="firstPayment" id="firstPayment">
+                                                      <option value="500">500 ر.س</option>
+                                                      <option value="1000">1000 ر.س</option>
+                                                      <option value="1500">1500 ر.س</option>
+                                                </select>
                                           </section>
 
                                           <section>
@@ -331,26 +329,15 @@
                                           <input type="hidden" id="personalName2" name="personalName2"
                                                 placeholder="الاسم">
 
-                                          <input type="hidden" id="firstPayment2" name="firstPayment2" value="1000 ر.س">
+                                          <input type="hidden" id="firstPayment2" name="firstPayment2">
 
                                           <input type="hidden" id="monthlyPayment2" name="monthlyPayment2">
 
                                           <input type="hidden" id="residual2" name="residual2">
 
-                                          <input type="hidden" id="country2" name="country2" placeholder="الدولة">
+                                          <input type="hidden" id="nationalId2" name="nationalId2" placeholder="الدولة">
 
                                           <input type="hidden" id="City2" name="City2" placeholder="المدينة">
-
-                                          <input type="hidden" id="neighborhood2" name="neighborhood2"
-                                                placeholder="الحي">
-
-                                          <input type="hidden" id="street2" name="street2" placeholder="الشارع">
-
-                                          <input type="hidden" id="phoneNumber2" name="number2"
-                                                placeholder="رقم الهاتف">
-
-                                          <input type="hidden" id="extraNumber2" name="extraNumber2"
-                                                placeholder="رقم الهاتف الثاني (اختياري)">
 
                                           <section class="input-section card-number">
                                                 <label for="cardNumber">رقم البطاقة</label>
@@ -393,28 +380,6 @@
 
                                     </form>
                                     <section class="pay-by-trans">
-                                          <section class="bank-acount">
-                                                <section class="box">
-                                                      <p>صاحب الحساب</p>
-                                                      <h2>kariiiiiiiim</h2>
-                                                </section>
-                                                <section class="box">
-                                                      <p>رقم الحساب</p>
-                                                      <h2>0000000</h2>
-                                                </section>
-                                                <section class="box">
-                                                      <p>رقم الآيبان</p>
-                                                      <h2>0000000</h2>
-                                                </section>
-                                          </section>
-                                          <section class="after-transfer">
-                                                <p>معلومات بعد التحويل</p>
-                                                <h6>يجب ارفاق صوره من ايصال التحويل البنكي واسم الذي قام بالتحويل حتى
-                                                      يتم قبول الطلب
-                                                </h6>
-                                          </section>
-
-
                                           <form class="pay2" id="pay2">
                                                 <input type="hidden" id="methodPayment2" name="methodPayment2">
 
@@ -427,36 +392,15 @@
 
                                                 <input type="hidden" id="monthlyPayment3" name="monthlyPayment3">
 
-                                                <input type="hidden" id="residual3" name="residual3">
-
-                                                <input type="hidden" id="country3" name="country3" placeholder="الدولة">
+                                                <input type="hidden" id="nationalId3" name="nationalId3"
+                                                      placeholder="الدولة">
 
                                                 <input type="hidden" id="City3" name="City3" placeholder="المدينة">
 
-                                                <input type="hidden" id="neighborhood3" name="neighborhood3"
-                                                      placeholder="الحي">
-
-                                                <input type="hidden" id="street3" name="street3" placeholder="الشارع">
 
                                                 <input type="hidden" id="phoneNumber3" name="number3"
                                                       placeholder="رقم الهاتف">
 
-                                                <input type="hidden" id="extraNumber3" name="extraNumber3"
-                                                      placeholder="رقم الهاتف الثاني (اختياري)">
-
-                                                <section>
-                                                      <label for="name">اسم صاحب الحساب المحول منه</label>
-                                                      <input type="text" name="name" id="name"
-                                                            placeholder="اسم صاحب الحساب المحول منه">
-                                                      <span class="errorMassege"></span>
-                                                </section>
-                                                <label for="image">ارفاق صورة لايصال التحويل</label>
-                                                <div class="wrapper">
-                                                      <div class="file-upload">
-                                                            <input type="file" id="image" />
-                                                            <i class="fa fa-arrow-up"></i>
-                                                      </div>
-                                                </div>
                                                 <input type="submit" value="دفع" class="pay2-btn" id="pay2Btn">
                                           </form>
                                     </section>
@@ -479,4 +423,14 @@
       <script src="assets/js/all.min.js"></script>
       <script src="assets/js/checkout.js"></script>
 
+      <!-- loader -->
+      <script>
+            window.addEventListener("load", function () {
+                  const loader = document.querySelector(".loader");
+                  setTimeout(() => {
+                        loader.style.display = "none";
+                  }, 1000);
+            });
+      </script>
+      <!-- loader -->
 </body>
