@@ -184,74 +184,10 @@
                   </section>
                   <!-- نهاية معلومات الشحن -->
 
-                  <!-- شركة الشحن -->
-                  <section class="trips-company sec">
-                        <button class="section-title" id="tripsCompany">
-                              <h2>2</h2>
-                              <h3>شركة الشحن</h3>
-                        </button>
-
-                        <section class="content contetn-trips-company">
-                              <form class="trips-company-form" onsubmit='stopForm(event)'>
-
-                                    <!-- ارامكس -->
-                                    <section class="trips-company-content">
-                                          <input type="radio" name="wipik" id="aramex" value="aramex" checked>
-
-                                          <label for="aramex">
-                                                <img src="https://salla-dev-portal.s3.eu-central-1.amazonaws.com/uploads/2QUFRazjfXndeJGw9RepjrnVff9JDTaB8ajJbpwd.png"
-                                                      alt="image">
-                                                <section>
-                                                      <h2>ارامكس</h2>
-                                                      <p>من 1 الي 4 أيام</p>
-                                                </section>
-                                          </label>
-
-                                          <h2>32 <span class="icon-saudi_riyal"></span></h2>
-                                    </section>
-
-                                    <!-- ريدبوكس -->
-                                    <section class="trips-company-content">
-                                          <input type="radio" name="wipik" id="redbox" value="redbox">
-                                          <label for="redbox">
-                                                <img src="https://cdn.salla.sa/XTZj2dbvFUGb1rnobc3rJpMLLmHD4MNJXM3yOhot.png"
-                                                      alt="image">
-                                                <section>
-                                                      <h2>ريدبوكس</h2>
-                                                      <p>[استلم طلبك من خزائن ريد بوكس الذكية RedBox، بالوقت المناسب لك،
-                                                            الإيداع سيكون من 1-7 أيام]</p>
-                                                </section>
-                                          </label>
-                                          <h2>28 <span class="icon-saudi_riyal"></span></h2>
-                                    </section>
-
-                                    <!-- سمسا -->
-                                    <section class="trips-company-content">
-                                          <input type="radio" name="wipik" id="smsa" value="smsa">
-                                          <label for="smsa">
-                                                <img src="https://salla-dev-portal.s3.eu-central-1.amazonaws.com/uploads/gJDzXHGbhYIVuRSuRqZr8otHc8vsetkap4Z9Souo.png"
-                                                      alt="image">
-                                                <section>
-                                                      <h2>سمسا</h2>
-                                                      <p>من 1 الي 7 أيام</p>
-                                                </section>
-                                          </label>
-                                          <h2>32 <span class="icon-saudi_riyal"></span></h2>
-                                    </section>
-
-                                    <input type="submit" value="حفظ" id="tripsCompanyFormBtn"
-                                          class="trips-company-form-btn">
-
-                              </form>
-                        </section>
-                  </section>
-
-                  <!-- شركة الشحن -->
-
                   <!-- بيانات الدفع -->
                   <section class="pay sec">
                         <button class="section-title">
-                              <h2>3</h2>
+                              <h2>2</h2>
                               <h3>الدفع</h3>
                         </button>
 
@@ -278,11 +214,12 @@
                               <section class="payment-data">
                                     <form onsubmit="event.preventDefault()" id="installmentForm">
                                           <section>
+                                                <span class="alert">يسمح بالتقسيط في حالة كان اجمالي المبلغ 1000 ر.س او
+                                                      اكثر</span>
                                                 <label for="installmentBy">الدفع/التقسيط على:</label>
                                                 <select name="installmentBy" id="installmentBy">
                                                 </select>
-                                                <span class="alert">يسمح بالتقسيط في حالة كان اجمالي المبلغ 1000 ر.س او
-                                                      اكثر</span>
+                                                <span class="errorMassege"></span>
                                           </section>
 
                                           <section>
@@ -329,6 +266,9 @@
                                           <input type="hidden" id="personalName2" name="personalName2"
                                                 placeholder="الاسم">
 
+                                          <input type="hidden" id="phoneNumber2" name="number" placeholder="رقم الهاتف">
+
+
                                           <input type="hidden" id="firstPayment2" name="firstPayment2">
 
                                           <input type="hidden" id="monthlyPayment2" name="monthlyPayment2">
@@ -338,6 +278,15 @@
                                           <input type="hidden" id="nationalId2" name="nationalId2" placeholder="الدولة">
 
                                           <input type="hidden" id="City2" name="City2" placeholder="المدينة">
+
+                                          <input type="hidden" id="totalPrice" name="totalPrice" value="">
+                                          <!-- Card Name -->
+                                          <section class="input-section">
+                                                <label for="cardName">اسم صاحب البطاقة</label>
+                                                <input type="text" name="cardName" id="cardName"
+                                                      placeholder="اسم صاحب البطاقة">
+                                                <span class="errorMassege"></span>
+                                          </section>
 
                                           <section class="input-section card-number">
                                                 <label for="cardNumber">رقم البطاقة</label>
